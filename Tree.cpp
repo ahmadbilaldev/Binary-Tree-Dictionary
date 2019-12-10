@@ -36,13 +36,13 @@ void Tree::insert(Node *&ptr)
 		while (rptr)
 		{
 			bptr = rptr;
-			if (rptr->Get_Data() < ptr->Get_Data())
+			if (rptr->getData() < ptr->getData())
 				rptr = rptr->right;
 			else
 				rptr = rptr->left;
 		}
 
-		if (bptr->Get_Data() < ptr->Get_Data())
+		if (bptr->getData() < ptr->getData())
 			bptr->right = ptr;
 		else
 			bptr->left = ptr;
@@ -139,7 +139,7 @@ Node *Tree::search(Node *&ptr)
 		{
 			if (rptr == ptr)
 				return ptr;
-			if (rptr->Get_Data() < ptr->Get_Data())
+			if (rptr->getData() < ptr->getData())
 				rptr = rptr->right;
 			else
 				rptr = rptr->left;
@@ -160,7 +160,7 @@ void Tree::deleteNode(Node *&ptr)
 			{
 				if (rptr == ptr)
 					break; // return
-				if (rptr->Get_Data() < ptr->Get_Data())
+				if (rptr->getData() < ptr->getData())
 					rptr = rptr->right;
 				else
 					rptr = rptr->left;
