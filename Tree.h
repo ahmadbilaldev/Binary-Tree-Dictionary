@@ -1,6 +1,6 @@
 #ifndef TREE_H
 #define TREE_H
-#include "cNode.cpp"
+#include "Node.cpp"
 
 class Tree
 {
