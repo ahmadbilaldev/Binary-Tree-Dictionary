@@ -13,9 +13,11 @@ private:
 public:
 	Node *left, *right;
 	Node();
-	Node(int data);
-	void setLeft(int data);
-	void setRight(int data);
+	Node(string data);
+	void setWord(string data);
+	void setSynonym(string synData);
+	void setLeft(string data);
+	void setRight(string data);
 	void Print();
 };
 #endif

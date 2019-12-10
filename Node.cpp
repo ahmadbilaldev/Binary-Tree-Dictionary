@@ -3,27 +3,30 @@
 #include <string>
 #include "Node.h"
 
-Node::Node() : data(0), left(NULL), right(NULL)
+Node::Node() : data(NULL), left(NULL), right(NULL)
 {
 }
 
-Node::Node(int data) : data(data), left(NULL), right(NULL)
+Node::Node(string data) : data(data), left(NULL), right(NULL)
 {
 }
 
-void Node::setData(int data)
+/*
+ * Main setter function
+ */
+void Node::setWord(string data)
 {
 	this->data = data;
 }
 
-void Node::setLeft(int data)
+void Node::setLeft(string data)
 {
-	left->setData(data);
+	left->setWord(data);
 }
 
-void Node::setRight(int data)
+void Node::setRight(string data)
 {
-	right->setData(data);
+	right->setWord(data);
 }
 
 void Node::Print()
