@@ -1,35 +1,32 @@
 #include <iostream>
 #include <iomanip>
-#include "cNode.h"
+#include <string>
+#include "Node.h"
 
-Node::Node() : Data(0), left(NULL), right(NULL)
+Node::Node() : data(0), left(NULL), right(NULL)
 {
 }
 
-Node::Node(int data) : Data(data), left(NULL), right(NULL)
+Node::Node(int data) : data(data), left(NULL), right(NULL)
 {
 }
 
-void Node::Set_Data(int data)
+void Node::setData(int data)
 {
-	this->Data = data;
+	this->data = data;
 }
 
-void Node::Set_Left(int data)
+void Node::setLeft(int data)
 {
-	left->Set_Data(data);
+	left->setData(data);
 }
 
-void Node::Set_Right(int data)
+void Node::setRight(int data)
 {
-	right->Set_Data(data);
-}
-int Node::Get_Data() const
-{
-	return Data;
+	right->setData(data);
 }
 
 void Node::Print()
 {
-	cout << setw(14) << Data << endl;
+	cout << setw(14) << data << endl;
 }

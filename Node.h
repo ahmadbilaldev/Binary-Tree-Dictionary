@@ -1,24 +1,21 @@
 #ifndef Node_H
 #define Node_H
 #include <fstream>
+#include <string>
 
 using namespace std;
 
 class Node
 {
 private:
-	int Data;
-	int Priority;
+	string data;
 
 public:
 	Node *left, *right;
 	Node();
 	Node(int data);
-	void Set_Left(int data);
-	void Set_Right(int data);
-	int Get_Data() const;
-	void Set_Data(int data);
-
+	void setLeft(int data);
+	void setRight(int data);
 	void Print();
 };
 #endif
