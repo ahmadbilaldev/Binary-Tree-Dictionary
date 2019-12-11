@@ -7,6 +7,7 @@ using namespace std;
 class Node
 {
 private:
+	bool bookmark;
 	string word,synonym,defination;
 
 public:
@@ -17,6 +18,8 @@ public:
 	void setSynonym(string synOfWord);
 	void editWord(string s1);
 	string getWord();
+	void setBookMark();
+	bool checkMarked();
 	string getSynonym();
 	string getDefinition();
 	void printWord();

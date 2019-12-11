@@ -175,6 +175,17 @@ void Tree::editWord(string existWord,string newWord)
 	}
 }
 
+void Tree::setBookMark(string s1)
+{
+	Node* ptr = search(s1);
+	if (ptr)
+	{
+		ptr->setBookMark();
+	}
+
+}
+
+
 
 Node* Tree::search(string s1)
 {
