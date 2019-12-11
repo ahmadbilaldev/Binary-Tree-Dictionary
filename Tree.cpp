@@ -171,7 +171,7 @@ void Tree::editWord(string existWord,string newWord)
 	if (nptr)
 	{
 		nptr->editWord(newWord);
-		insert(nptr);
+		insert(nptr->getWord(), nptr->getSynonym(), nptr->getDefinition());
 	}
 }
 

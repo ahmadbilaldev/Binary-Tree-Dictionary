@@ -20,5 +20,7 @@ public:
 	string getWord();
 	void setBookMark();
 	bool checkMarked();
+	string getSynonym();
+	string getDefinition();
 	void printWord();
 };
