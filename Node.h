@@ -17,5 +17,7 @@ public:
 	void setSynonym(string synOfWord);
 	void editWord(string s1);
 	string getWord();
+	string getSynonym();
+	string getDefinition();
 	void printWord();
 };
