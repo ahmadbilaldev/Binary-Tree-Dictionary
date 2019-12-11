@@ -1,12 +1,11 @@
 #include "Tree.h"
-#include<string>
+#include <string>
 
-
-Tree::Tree() : root(NULL),count(0)
+Tree::Tree() : root(NULL), count(0)
 {
 }
 
-Tree::Tree(Node*& ptr) : root(ptr), count(1)
+Tree::Tree(Node *&ptr) : root(ptr), count(1)
 {
 	ptr = root->leftptr = root->rightptr = NULL;
 }
@@ -27,10 +26,9 @@ bool Tree::isNotEmpty()
 		return true;
 }
 
-
-Tree& Tree::insert(string word, string synonym, string defination)
+Tree &Tree::insert(string word, string synonym, string defination)
 {
-	Node* ptr = new Node(word, synonym, defination);
+	Node *ptr = new Node(word, synonym, defination);
 	if (!root)
 	{
 		root = ptr;
@@ -39,7 +37,7 @@ Tree& Tree::insert(string word, string synonym, string defination)
 	}
 	else
 	{
-		Node* rptr, * bptr;
+		Node *rptr, *bptr;
 		bptr = NULL;
 		rptr = root;
 		while (rptr)
@@ -58,7 +56,7 @@ Tree& Tree::insert(string word, string synonym, string defination)
 	}
 	ptr = ptr->leftptr = ptr->rightptr = NULL;
 	++count;
-	return* this;
+	return *this;
 }
 
 void Tree::printInfixOrder()
@@ -67,7 +65,8 @@ void Tree::printInfixOrder()
 
 	if (!root)
 		cout << "\nEmpty Tree\n";
-	else {
+	else
+	{
 
 		cout << left << setw(30);
 		cout << "Words";
@@ -81,7 +80,7 @@ void Tree::printInfixOrder()
 	}
 }
 
-void prtInfixOrder(Node* root)
+void prtInfixOrder(Node *root)
 {
 	if (root)
 	{
@@ -98,7 +97,7 @@ Tree::~Tree()
 		deleteNodes(root);
 }
 
-void deleteNodes(Node* root)
+void deleteNodes(Node *root)
 {
 	if (root)
 	{
@@ -107,56 +106,73 @@ void deleteNodes(Node* root)
 		delete root;
 	}
 }
-Node* Tree::removeWord(string word) {
-	Node* ptr, * temp;
+Node *Tree::removeWord(string word)
+{
+	Node *ptr, *temp;
 	ptr = root;
 	temp = NULL;
 
-	if (!ptr) {
+	if (!ptr)
+	{
 		cout << "The tree is empty thus returning NULL" << endl;
 		return NULL;
 	}
 
-	while (ptr) {
-		if (ptr->getWord() == word) {
-			Node* rptr = ptr;
-			if (!ptr->leftptr) {
-				if (!temp) {
+	while (ptr)
+	{
+		if (ptr->getWord() == word)
+		{
+			Node *rptr = ptr;
+			if (!ptr->leftptr)
+			{
+				if (!temp)
+				{
 					root = rptr->rightptr;
 				}
-				else if (temp->leftptr == rptr) {
+				else if (temp->leftptr == rptr)
+				{
 					temp->leftptr = rptr->rightptr;
 				}
-				else {
+				else
+				{
 					temp->rightptr = rptr->rightptr;
 				}
 				rptr->rightptr = rptr->leftptr = NULL;
 			}
-			else if (!ptr->rightptr) {
-				if (!temp) {
+			else if (!ptr->rightptr)
+			{
+				if (!temp)
+				{
 					root = rptr->leftptr;
 				}
-				else if (temp->leftptr == rptr) {
+				else if (temp->leftptr == rptr)
+				{
 					temp->leftptr = rptr->leftptr;
 				}
-				else {
+				else
+				{
 					temp->rightptr = rptr->leftptr;
 				}
 				rptr->rightptr = rptr->leftptr = NULL;
 			}
-			else {
+			else
+			{
 				ptr = ptr->rightptr;
-				while (ptr->leftptr) {
+				while (ptr->leftptr)
+				{
 					ptr = ptr->leftptr;
 				}
 				ptr->leftptr = rptr->leftptr;
-				if (!temp) {
+				if (!temp)
+				{
 					root = rptr->rightptr;
 				}
-				else if (temp->leftptr == rptr) {
+				else if (temp->leftptr == rptr)
+				{
 					temp->leftptr = rptr->leftptr;
 				}
-				else {
+				else
+				{
 					temp->rightptr = rptr->leftptr;
 				}
 				rptr->rightptr = rptr->leftptr = NULL;
@@ -165,19 +181,21 @@ Node* Tree::removeWord(string word) {
 			return rptr;
 		}
 		temp = ptr;
-		if (ptr->getWord() > word) {
+		if (ptr->getWord() > word)
+		{
 			ptr = ptr->leftptr;
 		}
-		else {
+		else
+		{
 			ptr = ptr->rightptr;
 		}
 	}
 	return NULL;
 }
 
-void Tree::editWord(string existWord,string newWord)
+void Tree::editWord(string existWord, string newWord)
 {
-	Node* nptr=removeWord(existWord);
+	Node *nptr = removeWord(existWord);
 	if (nptr)
 	{
 		nptr->editWord(newWord);
@@ -185,29 +203,27 @@ void Tree::editWord(string existWord,string newWord)
 	}
 }
 
-
 void Tree::setBookMark(string s1)
 {
-	Node* ptr = search(s1);
+	Node *ptr = search(s1);
 	if (ptr)
 	{
 		ptr->setBookMark();
 	}
-
 }
 
 void Tree::printMarked()
 {
-	void prtMarked(Node *& root);
+	void prtMarked(Node * &root);
 	if (root)
 	{
 		prtMarked(root);
 	}
 }
 
-void prtMarked(Node*&root)
+void prtMarked(Node *&root)
 {
-	if (root) 
+	if (root)
 	{
 		prtMarked(root->leftptr);
 		if (root->getMarked())
@@ -218,12 +234,11 @@ void prtMarked(Node*&root)
 	}
 }
 
-
-Node* Tree::search(string s1)
+Node *Tree::search(string s1)
 {
 	if (isNotEmpty())
 	{
-		Node* rptr = root;
+		Node *rptr = root;
 		while (rptr)
 		{
 			if (rptr->getWord() == s1)
@@ -236,5 +251,17 @@ Node* Tree::search(string s1)
 	}
 	cout << "The Word you are trying to search does not appear to be in the Dictionay" << endl;
 	return NULL;
-	
+}
+
+void Tree::writeToFile(ofstream &outFile)
+{
+
+	void filePrtInfixOrder(Node * root);
+
+	if (root)
+	{
+		filePrtInfixOrder(root->leftptr);
+		outFile << root->getWord();
+		filePrtInfixOrder(root->rightptr);
+	}
 }
