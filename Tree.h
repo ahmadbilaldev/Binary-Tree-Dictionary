@@ -15,7 +15,7 @@ public:
 	Tree(Node*& ptr);
 	bool isEmpty();
 	bool isNotEmpty();
-	Tree& insert(Node*& ptr);
+	Tree& insert(string word, string synonym, string defination);
 	void editWord(string existWord,string newWord);
 	Node* removeWord(string word);
 	void printInfixOrder();
