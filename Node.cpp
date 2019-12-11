@@ -55,5 +55,5 @@ string Node::getSynonym() {
 }
 
 string Node::getDefinition() {
-	return defination;
+	return definition;
 }

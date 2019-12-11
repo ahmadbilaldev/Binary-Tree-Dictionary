@@ -209,12 +209,12 @@ void prtMarked(Node*&root)
 {
 	if (root) 
 	{
-		prtMarked(root->left);
+		prtMarked(root->leftptr);
 		if (root->getMarked())
 		{
 			root->printWord();
 		}
-		prtMarked(root->right);
+		prtMarked(root->rightptr);
 	}
 }
 
