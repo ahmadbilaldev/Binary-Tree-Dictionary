@@ -19,7 +19,7 @@ public:
 	void editWord(string s1);
 	string getWord();
 	void setBookMark();
-	bool checkMarked();
+	bool getMarked();
 	string getSynonym();
 	string getDefinition();
 	void printWord();

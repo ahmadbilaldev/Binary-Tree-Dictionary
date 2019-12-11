@@ -33,8 +33,9 @@ void Node::setBookMark()
 {
 	bookmark = true;
 }
-bool Node::checkMarked()
+bool Node::getMarked()
 {
+	
 	return bookmark;
 }
 void Node::printWord()

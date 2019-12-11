@@ -185,8 +185,27 @@ void Tree::setBookMark(string s1)
 
 }
 
+void Tree::printMarked()
+{
+	void prtMarked(Node *& root);
+	if (root)
+	{
+		prtMarked(root);
+	}
+}
 
-
+void prtMarked(Node*&root)
+{
+	if (root) 
+	{
+		prtMarked(root->left);
+		if (root->getMarked())
+		{
+			root->printWord();
+		}
+		prtMarked(root->right);
+	}
+}
 Node* Tree::search(string s1)
 {
 	if (isNotEmpty())

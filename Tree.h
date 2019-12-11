@@ -20,6 +20,7 @@ public:
 	Node* removeWord(string word);
 	void printInfixOrder();
 	void setBookMark(string s1);
+	void printMarked();
 	Node* search(string s1);
 	~Tree();
 };
