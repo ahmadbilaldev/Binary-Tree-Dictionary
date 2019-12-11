@@ -7,7 +7,7 @@ using namespace std;
 class Node
 {
 private:
-	string word,synonym;
+	string word,synonym,defination;
 
 public:
 	Node* left, * right;
