@@ -67,8 +67,18 @@ void Tree::printInfixOrder()
 
 	if (!root)
 		cout << "\nEmpty Tree\n";
-	else
+	else {
+
+		cout << left << setw(30);
+		cout << "Words";
+		cout << setw(30);
+		cout << "Synonyms";
+		cout << setw(30);
+		cout << "Definitions";
+		cout << endl;
 		prtInfixOrder(root);
+		cout << endl;
+	}
 }
 
 void prtInfixOrder(Node* root)
@@ -174,17 +184,6 @@ void Tree::editWord(string existWord,string newWord)
 		insert(nptr->getWord(), nptr->getSynonym(), nptr->getDefinition());
 	}
 }
-
-void Tree::setBookMark(string s1)
-{
-	Node* ptr = search(s1);
-	if (ptr)
-	{
-		ptr->setBookMark();
-	}
-
-}
-
 
 
 Node* Tree::search(string s1)

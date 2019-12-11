@@ -8,7 +8,7 @@ class Node
 {
 private:
 	bool bookmark;
-	string word,synonym,defination;
+	string word,synonym,definition;
 
 public:
 	Node* leftptr, * rightptr;

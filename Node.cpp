@@ -1,11 +1,11 @@
 #include<string>
 #include "Node.h"
 
-Node::Node() : word(""),synonym(""),defination(""), leftptr(NULL), rightptr(NULL)
+Node::Node() : word(""),synonym(""),definition(""), leftptr(NULL), rightptr(NULL)
 {
 }
 
-Node::Node(string word, string synonym, string defination) : word(word),synonym(synonym),defination(defination), leftptr(NULL), rightptr(NULL){}
+Node::Node(string word, string synonym, string definition) : word(word),synonym(synonym),definition(definition), leftptr(NULL), rightptr(NULL){}
 
 
 
@@ -39,7 +39,13 @@ bool Node::checkMarked()
 }
 void Node::printWord()
 {
-	cout << word << " ";
+	cout << left << setw(30);
+	cout << word;
+	cout << setw(30);
+	cout << synonym;
+	cout << setw(30);
+	cout << definition;
+	cout << endl;
 }
 
 
