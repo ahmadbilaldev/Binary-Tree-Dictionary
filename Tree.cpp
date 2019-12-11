@@ -27,8 +27,10 @@ bool Tree::isNotEmpty()
 		return true;
 }
 
-Tree& Tree::insert(Node*& ptr)
+
+Tree& Tree::insert(string word, string synonym, string defination)
 {
+	Node* ptr = new Node(word, synonym, defination);
 	if (!root)
 	{
 		root = ptr;
