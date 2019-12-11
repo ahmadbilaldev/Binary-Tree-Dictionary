@@ -1,5 +1,5 @@
 #include "Tree.h"
-
+#include<string>
 
 
 Tree::Tree() : root(NULL),count(0)
@@ -95,27 +95,6 @@ void deleteNodes(Node* root)
 		delete root;
 	}
 }
-
-Node* Tree::search(Node*& ptr)
-{
-	if (isNotEmpty())
-	{
-		Node* rptr = root;
-		while (rptr)
-		{
-			if (rptr == ptr)
-				return ptr;
-			if (rptr->getWord() < ptr->getWord())
-				rptr = rptr->right;
-			else
-				rptr = rptr->left;
-		}
-	}
-	return NULL;
-}
-
-
-
 Node* Tree::removeWord(string word) {
 	Node* ptr, * temp;
 	ptr = root;
@@ -179,6 +158,32 @@ Node* Tree::removeWord(string word) {
 		}
 		else {
 			ptr = ptr->right;
+		}
+	}
+	return NULL;
+}
+
+void Tree::editWord(string existWord,string newWord)
+{
+	Node* nptr=removeWord(existWord);
+	nptr->editWord(newWord);
+	insert(nptr);
+}
+
+
+Node* Tree::search(string s1)
+{
+	if (isNotEmpty())
+	{
+		Node* rptr = root;
+		while (rptr)
+		{
+			if (rptr->getWord() == s1)
+				return rptr;
+			if (rptr->getWord() < s1)
+				rptr = rptr->right;
+			else
+				rptr = rptr->left;
 		}
 	}
 	return NULL;

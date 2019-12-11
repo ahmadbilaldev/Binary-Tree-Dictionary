@@ -15,6 +15,7 @@ public:
 	Node(string word);
 	void setWord(string word);
 	void setSynonym(string synOfWord);
+	void editWord(string s1);
 	string getWord();
 	void printWord();
 };

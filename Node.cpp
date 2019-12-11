@@ -1,4 +1,4 @@
-
+#include<string>
 #include "Node.h"
 
 Node::Node() : word(""), left(NULL), right(NULL)
@@ -18,6 +18,10 @@ void Node::setSynonym(string synonym)
 	this->synonym = synonym;
 }
 
+void Node::editWord(string s1)
+{
+	word = s1;
+}
 
 string Node::getWord()
 {

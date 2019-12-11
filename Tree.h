@@ -1,6 +1,7 @@
 #pragma once
 #include "Node.h"
 #include <iostream>
+#include<string>
 using namespace std;
 
 
@@ -15,8 +16,9 @@ public:
 	bool isEmpty();
 	bool isNotEmpty();
 	Tree& insert(Node*& ptr);
+	void editWord(string existWord,string newWord);
 	Node* removeWord(string word);
 	void printInfixOrder();
-	Node* search(Node*& ptr);
+	Node* search(string s1);
 	~Tree();
 };
