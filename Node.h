@@ -11,7 +11,7 @@ private:
 	string word,synonym,defination;
 
 public:
-	Node* left, * right;
+	Node* leftptr, * rightptr;
 	Node();
 	Node(string word, string synonym, string defination);
 	void setWord(string word);
