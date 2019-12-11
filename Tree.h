@@ -1,24 +1,21 @@
-#ifndef TREE_H
-#define TREE_H
-#include "Node.cpp"
+#pragma once
+#include "Node.h"
+#include <iostream>
+using namespace std;
+
 
 class Tree
 {
-	Node *root;
+	Node* root;
 	int count;
 
 public:
 	Tree();
-	Tree(Node *&ptr);
+	Tree(Node*& ptr);
 	bool isEmpty();
 	bool isNotEmpty();
-	void insert(Node *&ptr);
-	void printPreOrder();
-	void printPostOrder();
+	void insert(Node*& ptr);
 	void printInfixOrder();
-	Node *search(Node *&ptr);
-	void deleteNode(Node *&ptr);
-	int getMaxDegree();
+	Node* search(Node*& ptr);
 	~Tree();
 };
-#endif

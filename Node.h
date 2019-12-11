@@ -1,23 +1,20 @@
-#ifndef Node_H
-#define Node_H
-#include <fstream>
+#pragma once
 #include <string>
+#include <iostream>
 
 using namespace std;
 
 class Node
 {
 private:
-	string data;
+	string word,synonym;
 
 public:
-	Node *left, *right;
+	Node* left, * right;
 	Node();
-	Node(string data);
-	void setWord(string data);
-	void setSynonym(string synData);
-	void setLeft(string data);
-	void setRight(string data);
-	void Print();
+	Node(string word);
+	void setWord(string word);
+	void setSynonym(string synOfWord);
+	string getWord();
+	void printWord();
 };
-#endif

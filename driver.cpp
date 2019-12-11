@@ -1,13 +1,12 @@
 #include <iostream>
-#include <string>
-#include <fstream>
-#include "Node.h"
 #include "Tree.h"
+using namespace std;
 
-int main()
+int main() 
 {
-
-    Tree Dictionary;
-
-    return 0;
+	Tree t1;
+	Node* node1=new Node("Ghous");
+	t1.insert(node1);
+	t1.printInfixOrder();
+	system("pause");
 }

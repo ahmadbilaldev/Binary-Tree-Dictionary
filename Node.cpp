@@ -1,35 +1,30 @@
-#include <iostream>
-#include <iomanip>
-#include <string>
+
 #include "Node.h"
 
-Node::Node() : data(NULL), left(NULL), right(NULL)
+Node::Node() : word(""), left(NULL), right(NULL)
 {
 }
 
-Node::Node(string data) : data(data), left(NULL), right(NULL)
+Node::Node(string word) : word(word), left(NULL), right(NULL){}
+
+
+void Node::setWord(string word)
 {
+	this->word = word;
 }
 
-/*
- * Main setter function
- */
-void Node::setWord(string data)
+void Node::setSynonym(string synonym)
 {
-	this->data = data;
+	this->synonym = synonym;
 }
 
-void Node::setLeft(string data)
+
+string Node::getWord()
 {
-	left->setWord(data);
+	return this->word;
 }
 
-void Node::setRight(string data)
+void Node::printWord()
 {
-	right->setWord(data);
-}
-
-void Node::Print()
-{
-	cout << setw(14) << data << endl;
+	cout << word << " ";
 }
