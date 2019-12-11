@@ -1,11 +1,13 @@
 #include<string>
 #include "Node.h"
 
-Node::Node() : word(""), left(NULL), right(NULL)
+Node::Node() : word(""),synonym(""),defination(""), left(NULL), right(NULL)
 {
 }
 
-Node::Node(string word) : word(word), left(NULL), right(NULL){}
+Node::Node(string word, string synonym, string defination) : word(word),synonym(synonym),defination(defination), left(NULL), right(NULL){}
+
+
 
 
 void Node::setWord(string word)
