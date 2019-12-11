@@ -34,3 +34,12 @@ void Node::printWord()
 {
 	cout << word << " ";
 }
+
+
+string Node::getSynonym() {
+	return synonym;
+}
+
+string Node::getDefinition() {
+	return defination;
+}
