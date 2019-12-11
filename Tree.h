@@ -19,6 +19,7 @@ public:
 	void editWord(string existWord,string newWord);
 	Node* removeWord(string word);
 	void printInfixOrder();
+	void setBookMark(string s1);
 	Node* search(string s1);
 	~Tree();
 };

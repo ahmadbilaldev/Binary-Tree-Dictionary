@@ -8,6 +8,7 @@ class Node
 {
 private:
 	string word,synonym;
+	bool bookmark;
 
 public:
 	Node* left, * right;
@@ -17,5 +18,7 @@ public:
 	void setSynonym(string synOfWord);
 	void editWord(string s1);
 	string getWord();
+	void setBookMark();
+	bool checkMarked();
 	void printWord();
 };

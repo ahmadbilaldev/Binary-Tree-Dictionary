@@ -27,7 +27,14 @@ string Node::getWord()
 {
 	return this->word;
 }
-
+void Node::setBookMark()
+{
+	bookmark = true;
+}
+bool Node::checkMarked()
+{
+	return bookmark;
+}
 void Node::printWord()
 {
 	cout << word << " ";
