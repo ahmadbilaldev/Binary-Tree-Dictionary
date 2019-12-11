@@ -113,3 +113,73 @@ Node* Tree::search(Node*& ptr)
 	}
 	return NULL;
 }
+
+
+
+Node* Tree::removeWord(string word) {
+	Node* ptr, * temp;
+	ptr = root;
+	temp = NULL;
+
+	if (!ptr) {
+		cout << "The tree is empty thus returning NULL" << endl;
+		return NULL;
+	}
+
+	while (ptr) {
+		if (ptr->getWord() == word) {
+			Node* rptr = ptr;
+			if (!ptr->left) {
+				if (!temp) {
+					root = rptr->right;
+				}
+				else if (temp->left == rptr) {
+					temp->left = rptr->right;
+				}
+				else {
+					temp->right = rptr->right;
+				}
+				rptr->right = rptr->left = NULL;
+			}
+			else if (!ptr->right) {
+				if (!temp) {
+					root = rptr->left;
+				}
+				else if (temp->left == rptr) {
+					temp->left = rptr->left;
+				}
+				else {
+					temp->right = rptr->left;
+				}
+				rptr->right = rptr->left = NULL;
+			}
+			else {
+				ptr = ptr->right;
+				while (ptr->left) {
+					ptr = ptr->left;
+				}
+				ptr->left = rptr->left;
+				if (!temp) {
+					root = rptr->right;
+				}
+				else if (temp->left == rptr) {
+					temp->left = rptr->left;
+				}
+				else {
+					temp->right = rptr->left;
+				}
+				rptr->right = rptr->left = NULL;
+			}
+			--count;
+			return rptr;
+		}
+		temp = ptr;
+		if (ptr->getWord() > word) {
+			ptr = ptr->left;
+		}
+		else {
+			ptr = ptr->right;
+		}
+	}
+	return NULL;
+}
