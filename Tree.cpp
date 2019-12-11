@@ -8,7 +8,7 @@ Tree::Tree() : root(NULL),count(0)
 
 Tree::Tree(Node*& ptr) : root(ptr), count(1)
 {
-	ptr = root->left = root->right = NULL;
+	ptr = root->leftptr = root->rightptr = NULL;
 }
 
 bool Tree::isEmpty()
@@ -46,17 +46,17 @@ Tree& Tree::insert(string word, string synonym, string defination)
 		{
 			bptr = rptr;
 			if (rptr->getWord() < ptr->getWord())
-				rptr = rptr->right;
+				rptr = rptr->rightptr;
 			else
-				rptr = rptr->left;
+				rptr = rptr->leftptr;
 		}
 
 		if (bptr->getWord() < ptr->getWord())
-			bptr->right = ptr;
+			bptr->rightptr = ptr;
 		else
-			bptr->left = ptr;
+			bptr->leftptr = ptr;
 	}
-	ptr = ptr->left = ptr->right = NULL;
+	ptr = ptr->leftptr = ptr->rightptr = NULL;
 	++count;
 	return* this;
 }
@@ -75,9 +75,9 @@ void prtInfixOrder(Node* root)
 {
 	if (root)
 	{
-		prtInfixOrder(root->left);
+		prtInfixOrder(root->leftptr);
 		root->printWord();
-		prtInfixOrder(root->right);
+		prtInfixOrder(root->rightptr);
 	}
 }
 
@@ -92,8 +92,8 @@ void deleteNodes(Node* root)
 {
 	if (root)
 	{
-		deleteNodes(root->left);
-		deleteNodes(root->right);
+		deleteNodes(root->leftptr);
+		deleteNodes(root->rightptr);
 		delete root;
 	}
 }
@@ -110,56 +110,56 @@ Node* Tree::removeWord(string word) {
 	while (ptr) {
 		if (ptr->getWord() == word) {
 			Node* rptr = ptr;
-			if (!ptr->left) {
+			if (!ptr->leftptr) {
 				if (!temp) {
-					root = rptr->right;
+					root = rptr->rightptr;
 				}
-				else if (temp->left == rptr) {
-					temp->left = rptr->right;
+				else if (temp->leftptr == rptr) {
+					temp->leftptr = rptr->rightptr;
 				}
 				else {
-					temp->right = rptr->right;
+					temp->rightptr = rptr->rightptr;
 				}
-				rptr->right = rptr->left = NULL;
+				rptr->rightptr = rptr->leftptr = NULL;
 			}
-			else if (!ptr->right) {
+			else if (!ptr->rightptr) {
 				if (!temp) {
-					root = rptr->left;
+					root = rptr->leftptr;
 				}
-				else if (temp->left == rptr) {
-					temp->left = rptr->left;
+				else if (temp->leftptr == rptr) {
+					temp->leftptr = rptr->leftptr;
 				}
 				else {
-					temp->right = rptr->left;
+					temp->rightptr = rptr->leftptr;
 				}
-				rptr->right = rptr->left = NULL;
+				rptr->rightptr = rptr->leftptr = NULL;
 			}
 			else {
-				ptr = ptr->right;
-				while (ptr->left) {
-					ptr = ptr->left;
+				ptr = ptr->rightptr;
+				while (ptr->leftptr) {
+					ptr = ptr->leftptr;
 				}
-				ptr->left = rptr->left;
+				ptr->leftptr = rptr->leftptr;
 				if (!temp) {
-					root = rptr->right;
+					root = rptr->rightptr;
 				}
-				else if (temp->left == rptr) {
-					temp->left = rptr->left;
+				else if (temp->leftptr == rptr) {
+					temp->leftptr = rptr->leftptr;
 				}
 				else {
-					temp->right = rptr->left;
+					temp->rightptr = rptr->leftptr;
 				}
-				rptr->right = rptr->left = NULL;
+				rptr->rightptr = rptr->leftptr = NULL;
 			}
 			--count;
 			return rptr;
 		}
 		temp = ptr;
 		if (ptr->getWord() > word) {
-			ptr = ptr->left;
+			ptr = ptr->leftptr;
 		}
 		else {
-			ptr = ptr->right;
+			ptr = ptr->rightptr;
 		}
 	}
 	return NULL;
@@ -186,9 +186,9 @@ Node* Tree::search(string s1)
 			if (rptr->getWord() == s1)
 				return rptr;
 			if (rptr->getWord() < s1)
-				rptr = rptr->right;
+				rptr = rptr->rightptr;
 			else
-				rptr = rptr->left;
+				rptr = rptr->leftptr;
 		}
 	}
 	cout << "The Word you are trying to search does not appear to be in the Dictionay" << endl;
