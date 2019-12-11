@@ -186,6 +186,39 @@ void Tree::editWord(string existWord,string newWord)
 }
 
 
+void Tree::setBookMark(string s1)
+{
+	Node* ptr = search(s1);
+	if (ptr)
+	{
+		ptr->setBookMark();
+	}
+
+}
+
+void Tree::printMarked()
+{
+	void prtMarked(Node *& root);
+	if (root)
+	{
+		prtMarked(root);
+	}
+}
+
+void prtMarked(Node*&root)
+{
+	if (root) 
+	{
+		prtMarked(root->left);
+		if (root->getMarked())
+		{
+			root->printWord();
+		}
+		prtMarked(root->right);
+	}
+}
+
+
 Node* Tree::search(string s1)
 {
 	if (isNotEmpty())
