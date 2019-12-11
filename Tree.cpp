@@ -27,10 +27,14 @@ bool Tree::isNotEmpty()
 		return true;
 }
 
-void Tree::insert(Node*& ptr)
+Tree& Tree::insert(Node*& ptr)
 {
 	if (!root)
+	{
 		root = ptr;
+		++count;
+		return *this;
+	}
 	else
 	{
 		Node* rptr, * bptr;
@@ -49,11 +53,10 @@ void Tree::insert(Node*& ptr)
 			bptr->right = ptr;
 		else
 			bptr->left = ptr;
-
-		++count;
 	}
-
 	ptr = ptr->left = ptr->right = NULL;
+	++count;
+	return* this;
 }
 
 void Tree::printInfixOrder()

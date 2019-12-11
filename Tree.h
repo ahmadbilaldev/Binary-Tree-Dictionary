@@ -14,7 +14,7 @@ public:
 	Tree(Node*& ptr);
 	bool isEmpty();
 	bool isNotEmpty();
-	void insert(Node*& ptr);
+	Tree& insert(Node*& ptr);
 	void printInfixOrder();
 	Node* search(Node*& ptr);
 	~Tree();
