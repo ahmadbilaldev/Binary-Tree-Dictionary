@@ -166,8 +166,11 @@ Node* Tree::removeWord(string word) {
 void Tree::editWord(string existWord,string newWord)
 {
 	Node* nptr=removeWord(existWord);
-	nptr->editWord(newWord);
-	insert(nptr);
+	if (nptr)
+	{
+		nptr->editWord(newWord);
+		insert(nptr);
+	}
 }
 
 
