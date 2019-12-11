@@ -186,5 +186,7 @@ Node* Tree::search(string s1)
 				rptr = rptr->left;
 		}
 	}
+	cout << "The Word you are trying to search does not appear to be in the Dictionay" << endl;
 	return NULL;
+	
 }
