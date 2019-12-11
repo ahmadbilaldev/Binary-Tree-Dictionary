@@ -15,6 +15,7 @@ public:
 	bool isEmpty();
 	bool isNotEmpty();
 	Tree& insert(Node*& ptr);
+	Node* removeWord(string word);
 	void printInfixOrder();
 	Node* search(Node*& ptr);
 	~Tree();
