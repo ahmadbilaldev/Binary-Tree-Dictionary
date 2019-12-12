@@ -25,4 +25,7 @@ public:
 	string getDefinition();
 	void printWord();
 	void writeToFile(ofstream &outFile);
+	void printSynonym();
+	void printDefinition();
+	void showWord();
 };
