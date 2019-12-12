@@ -330,3 +330,37 @@ bool Tree::logIn(ifstream &inFile)
 		cout << "Access Denied\n";
 	return logIn;
 }
+
+/*void Tree::wordOfTheDay()
+{
+	int random(int count);
+	int index;
+	if (root)
+	{
+		index = random(count);
+	}
+	int counter = 1;
+	cout << index;
+	void searchWordByIndex(Node * &root, int counter,int index);
+	searchWordByIndex(root, counter, index);
+}
+
+void searchWordByIndex(Node*& root, int counter,int index) 
+{
+	if (root) 
+	{
+
+		searchWordByIndex(root->leftptr, counter + 1, index);
+		if (counter == index) {
+			root->printWord();
+		}
+		searchWordByIndex(root->rightptr, counter + 1, index);
+	}
+}
+
+int random(int count)
+{
+	srand(time(0));
+	return ((rand() % count) + 1);
+}
+*/
