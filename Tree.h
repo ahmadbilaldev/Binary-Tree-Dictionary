@@ -25,5 +25,7 @@ public:
 	void writeToFile(ofstream &outFile);
 	void readFromFile(ifstream &inFile);
 	bool logIn(ifstream &InFile);
+	void showSynonymAndDefinition(string word);
+	void wordOfTheDay();
 	~Tree();
 };
