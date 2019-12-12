@@ -275,21 +275,26 @@ void toFile(Node *root, ofstream &outFile)
 	}
 }
 
-bool Tree::logIn(string userInput, string passInput, ifstream& inFile)
+bool Tree::logIn(ifstream& inFile)
 {
+	string userFile, passFile, userInput, passInput;
+	cout << "Enter the UserName\n";
+	cin >> userInput;
+	cout << "Enter the Password\n";
+	cin >> passInput;
 	bool logIn = false;
-	string userFile, passFile;
 	while (!(inFile.eof()))
 	{
 		getline(inFile, userFile);
 		getline(inFile, passFile);
-
 		if ((userFile == userInput) && (passFile == passInput))
 		{
 			logIn = true;
 		}
 	}
 	inFile.close();
+	if (logIn) cout << "Access Verified\n";
+	else cout << "Access Denied\n";
 	return logIn;
 
 }
