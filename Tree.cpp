@@ -364,3 +364,24 @@ int random(int count)
 	return ((rand() % count) + 1);
 }
 */
+
+//Function to show synonym and definition of selected word
+void Tree::showSynonymAndDefinition(string word)
+{
+	Node* ptr = search(word);
+	if (ptr != NULL)
+	{
+		cout << "Synonym and Definition of the selected word are: \n";
+		cout << "Word: ";
+		ptr->showWord();
+		cout << "\nSynonym: ";
+		ptr->printSynonym();
+		cout << "\nDefinition: ";
+		ptr->printDefinition();
+		cout << endl;
+	}
+	else
+	{
+		cout << "The Word which you have selected is not present in the dictionary\n";
+	}
+}
