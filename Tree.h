@@ -22,7 +22,8 @@ public:
 	void setBookMark(string s1);
 	void printMarked();
 	Node *search(string s1);
-	bool logIn(ifstream &InFile);
 	void writeToFile(ofstream &outFile);
+	void readFromFile(ifstream &inFile);
+	bool logIn(ifstream &InFile);
 	~Tree();
 };

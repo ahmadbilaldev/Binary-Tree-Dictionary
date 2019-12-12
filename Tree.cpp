@@ -275,7 +275,38 @@ void toFile(Node *root, ofstream &outFile)
 	}
 }
 
-bool Tree::logIn(ifstream& inFile)
+void Tree::readFromFile(ifstream &inFile)
+{
+	string line = "";
+
+	while (!(inFile.eof()))
+	{
+		getline(inFile, line);
+		if (line == "")
+		{
+			break;
+		}
+		int character = 0;
+		string word = "", synonym = "", def = "";
+		for (character; line[character] != ','; character++)
+		{
+			word += line[character];
+		}
+		character++;
+		for (character; line[character] != ','; character++)
+		{
+			synonym += line[character];
+		}
+		character++;
+		for (character; line[character] != ','; character++)
+		{
+			def += line[character];
+		}
+		insert(word, synonym, def);
+	}
+}
+
+bool Tree::logIn(ifstream &inFile)
 {
 	string userFile, passFile, userInput, passInput;
 	cout << "Enter the UserName\n";
@@ -293,8 +324,9 @@ bool Tree::logIn(ifstream& inFile)
 		}
 	}
 	inFile.close();
-	if (logIn) cout << "Access Verified\n";
-	else cout << "Access Denied\n";
+	if (logIn)
+		cout << "Access Verified\n";
+	else
+		cout << "Access Denied\n";
 	return logIn;
-
 }
