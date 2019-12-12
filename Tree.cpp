@@ -276,3 +276,22 @@ void toFile(Node *root, ofstream &outFile)
 		toFile(root->rightptr, outFile);
 	}
 }
+
+bool Tree::logIn(string userInput, string passInput, ifstream& inFile)
+{
+	bool logIn = false;
+	string userFile, passFile;
+	while (!(inFile.eof()))
+	{
+		getline(inFile, userFile);
+		getline(inFile, passFile);
+
+		if ((userFile == userInput) && (passFile == passInput))
+		{
+			logIn = true;
+		}
+	}
+	inFile.close();
+	return logIn;
+
+}

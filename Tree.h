@@ -22,6 +22,7 @@ public:
 	void setBookMark(string s1);
 	void printMarked();
 	Node *search(string s1);
+	bool logIn(string userInput, string passInput, ifstream &InFile);
 	void writeToFile(ofstream &outFile);
 	~Tree();
 };
