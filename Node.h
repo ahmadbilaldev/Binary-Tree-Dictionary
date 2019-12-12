@@ -9,10 +9,10 @@ class Node
 {
 private:
 	bool bookmark;
-	string word,synonym,definition;
+	string word, synonym, definition;
 
 public:
-	Node* leftptr, * rightptr;
+	Node *leftptr, *rightptr;
 	Node();
 	Node(string word, string synonym, string defination);
 	void setWord(string word);
@@ -24,4 +24,5 @@ public:
 	string getSynonym();
 	string getDefinition();
 	void printWord();
+	void writeToFile(ofstream &outFile);
 };

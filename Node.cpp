@@ -1,14 +1,12 @@
-#include<string>
+#include <string>
+#include <fstream>
 #include "Node.h"
 
-Node::Node() : word(""),synonym(""),definition(""), leftptr(NULL), rightptr(NULL)
+Node::Node() : word(""), synonym(""), definition(""), leftptr(NULL), rightptr(NULL)
 {
 }
 
-Node::Node(string word, string synonym, string definition) : word(word),synonym(synonym),definition(definition), leftptr(NULL), rightptr(NULL){}
-
-
-
+Node::Node(string word, string synonym, string definition) : word(word), synonym(synonym), definition(definition), leftptr(NULL), rightptr(NULL) {}
 
 void Node::setWord(string word)
 {
@@ -35,7 +33,7 @@ void Node::setBookMark()
 }
 bool Node::getMarked()
 {
-	
+
 	return bookmark;
 }
 void Node::printWord()
@@ -49,11 +47,22 @@ void Node::printWord()
 	cout << endl;
 }
 
-
-string Node::getSynonym() {
+string Node::getSynonym()
+{
 	return synonym;
 }
 
-string Node::getDefinition() {
+string Node::getDefinition()
+{
 	return definition;
+}
+
+void Node::writeToFile(ofstream &outFile)
+{
+	outFile << word;
+	outFile << ",";
+	outFile << synonym;
+	outFile << ",";
+	outFile << definition;
+	outFile << endl;
 }
