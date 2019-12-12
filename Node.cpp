@@ -65,3 +65,16 @@ void Node::writeToFile(ofstream &outFile)
 	outFile << ",";
 	outFile << definition << ",";
 }
+void Node::printSynonym()
+{
+	cout << synonym;
+}
+void Node::printDefinition()
+{
+	cout << definition;
+}
+
+void Node::showWord()
+{
+	cout << word;
+}
