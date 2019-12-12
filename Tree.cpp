@@ -261,9 +261,7 @@ void Tree::writeToFile(ofstream &outFile)
 
 	if (root)
 	{
-		toFile(root->leftptr, outFile);
-		root->writeToFile(outFile);
-		toFile(root->rightptr, outFile);
+		toFile(root, outFile);
 	}
 }
 
