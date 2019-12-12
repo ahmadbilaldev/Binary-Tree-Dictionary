@@ -63,6 +63,5 @@ void Node::writeToFile(ofstream &outFile)
 	outFile << ",";
 	outFile << synonym;
 	outFile << ",";
-	outFile << definition;
-	outFile << endl;
+	outFile << definition << ",";
 }
