@@ -2,9 +2,9 @@
 #include <fstream>
 #include "Node.h"
 //default constructor of node class
-Node::Node() : word(""), synonym(""), definition(""), leftptr(NULL), rightptr(NULL),bookmark(false) {}
+Node::Node() : word(""), synonym(""), meaning(""), leftptr(NULL), rightptr(NULL),bookmark(false) {}
 //Parametrized Constructor of Node class
-Node::Node(string word, string synonym, string definition) : word(word), synonym(synonym), definition(definition), leftptr(NULL), rightptr(NULL),bookmark(false) {}
+Node::Node(string word, string synonym, string meaning) : word(word), synonym(synonym), meaning(meaning), leftptr(NULL), rightptr(NULL),bookmark(false) {}
 //Function that is used to set the Data member that Contains the Word
 void Node::setWord(string word)
 {
@@ -44,7 +44,7 @@ void Node::printWord()
 	cout << setw(30);
 	cout << synonym;
 	cout << setw(30);
-	cout << definition;
+	cout << meaning;
 	cout << endl;
 }
 //function that returns the synonym if a word
@@ -53,9 +53,9 @@ string Node::getSynonym()
 	return synonym;
 }
 //function that returns the definition if a word
-string Node::getDefinition()
+string Node::getMeaning()
 {
-	return definition;
+	return meaning;
 }
 //a function that is used to write all the data members of node to a file
 void Node::writeToFile(ofstream &outFile)
@@ -64,7 +64,7 @@ void Node::writeToFile(ofstream &outFile)
 	outFile << ",";
 	outFile << synonym;
 	outFile << ",";
-	outFile << definition << ",";
+	outFile << meaning << ",";
 }
 //function that outputs the Synonym of a word
 void Node::printSynonym()
@@ -72,9 +72,9 @@ void Node::printSynonym()
 	cout << synonym;
 }
 //function that outputs the Definition of a word
-void Node::printDefinition()
+void Node::printMeaning()
 {
-	cout << definition;
+	cout << meaning;
 }
 //function that outputs the word
 void Node::showWord()

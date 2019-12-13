@@ -17,7 +17,7 @@ public:
 	Tree(Node*& ptr);
 	bool isEmpty();
 	bool isNotEmpty();
-	Tree& insert(string word, string synonym, string defination);
+	Tree& insert(string word, string synonym, string meaning);
 	void editWord(string existWord, string newWord);
 	Node* removeWord(string word);
 	void printInfixOrder();
@@ -27,7 +27,7 @@ public:
 	void writeToFile(ofstream& outFile);
 	void readFromFile(ifstream& inFile);
 	bool logIn(ifstream& InFile);
-	void showSynonymAndDefinition(string word);
+	void showSynonymAndMeaning(string word);
 	void wordOfTheDay();
 	~Tree();
 };

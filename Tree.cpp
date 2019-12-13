@@ -32,9 +32,9 @@ bool Tree::isNotEmpty()
 }
 
 //Function to insert a new word in the dictionary
-Tree& Tree::insert(string word, string synonym, string defination)
+Tree& Tree::insert(string word, string synonym, string meaning)
 {
-	Node* ptr = new Node(word, synonym, defination);
+	Node* ptr = new Node(word, synonym, meaning);
 	if (!root) //Setting root when dictionary is empty
 	{
 		root = ptr;
@@ -80,7 +80,7 @@ void Tree::printInfixOrder()
 		cout << setw(30);
 		cout << "Synonyms";
 		cout << setw(30);
-		cout << "Definitions";
+		cout << "Meaning";
 		cout << endl;
 		prtInfixOrder(root); //printing the dictionary in inorder
 		cout << endl;
@@ -212,7 +212,7 @@ void Tree::editWord(string existWord, string newWord)
 	if (nptr)
 	{
 		nptr->editWord(newWord); //Calling node class function to edit the word
-		insert(nptr->getWord(), nptr->getSynonym(), nptr->getDefinition()); //inserting the word in the dictionary
+		insert(nptr->getWord(), nptr->getSynonym(), nptr->getMeaning()); //inserting the word in the dictionary
 	}
 }
 
@@ -390,7 +390,7 @@ int random(int count)
 }
 
 //Function to show synonym and definition of selected word
-void Tree::showSynonymAndDefinition(string word)
+void Tree::showSynonymAndMeaning(string word)
 {
 	Node* ptr = search(word); //searching the word
 	if (ptr != NULL)
@@ -401,7 +401,7 @@ void Tree::showSynonymAndDefinition(string word)
 		cout << "\nSynonym: ";
 		ptr->printSynonym(); //displaying the synonym
 		cout << "\nDefinition: ";
-		ptr->printDefinition(); //displaying the definition
+		ptr->printMeaning(); //displaying the definition
 		cout << endl;
 	}
 	else

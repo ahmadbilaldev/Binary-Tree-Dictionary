@@ -10,7 +10,7 @@ class Node
 private:
 	//data members of node class required in the dictionary
 	bool bookmark;
-	string word, synonym, definition;
+	string word, synonym, meaning;
 
 public:
 	//pointers to move towards leaf nodes
@@ -35,15 +35,14 @@ public:
 	void printWord();
 	//function that returns the synonym if a word
 	string getSynonym();
-	//function that returns the definition if a word
-	string getDefinition();
-
+	//function that returns the meaning of a word
+	string getMeaning();
 	//a function that is used to write all the data members of node to a file
 	void writeToFile(ofstream &outFile);
 	//function that outputs the Synonym of a word
 	void printSynonym();
-	//function that outputs the Definition of a word
-	void printDefinition();
+	//function that outputs the meaning of a word
+	void printMeaning();
 	//function that outputs the word
 	void showWord();
 };
