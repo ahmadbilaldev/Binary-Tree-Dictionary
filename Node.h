@@ -14,7 +14,7 @@ private:
 
 public:
 	//pointers to move towards leaf nodes
-	Node *leftptr, *rightptr;
+	Node* leftptr, * rightptr;
 	//default constructor of node class
 	Node();
 	//Parametrized Constructor of Node class
@@ -25,6 +25,8 @@ public:
 	void setSynonym(string synOfWord);
 	//Function that is used to EDIT an existing word
 	void editWord(string s1);
+	//Function to edit synonym
+	void editSynonym(string newSynonym);
 	//Funcion that returns the Word 
 	string getWord();
 	//Function that sets bookmark for a word
@@ -38,7 +40,7 @@ public:
 	//function that returns the meaning of a word
 	string getMeaning();
 	//a function that is used to write all the data members of node to a file
-	void writeToFile(ofstream &outFile);
+	void writeToFile(ofstream& outFile);
 	//function that outputs the Synonym of a word
 	void printSynonym();
 	//function that outputs the meaning of a word

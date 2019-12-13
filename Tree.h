@@ -32,5 +32,6 @@ public:
 	void showSynonymAndMeaning(string word); //To show synonyms and definition of a word
 	void wordOfTheDay(); //to show word of the day
 	~Tree(); //destructor
+<<<<<<< HEAD
 };
 
