@@ -30,7 +30,8 @@ int main()
 					cout << "4- Search a Word\n";
 					cout << "5- Set BookMark\n";
 					cout << "6- Show BookMarked\n";
-					cout << "7- To Exit the Menu\n";
+					cout << "7- To Edit Synonym\n";
+					cout << "8- To Exit the Menu\n";
 					cin >> option;
 					switch (option)
 					{
@@ -71,7 +72,7 @@ int main()
 						string word;
 						cout << "Please Enter the Word you want to Search :  ";
 						cin >> word;
-						Node *ptr=t1.search(word);
+						Node* ptr = t1.search(word);
 						ptr->printWord();
 						break;
 					}
@@ -88,15 +89,26 @@ int main()
 						t1.printMarked();
 						break;
 					}
+
+					case 7:
+					{
+						string existWord, newSynonym;
+						cout << "Please Enter the Word whose synonym you Want to edit :  ";
+						cin >> existWord;
+						cout << "Please Enter the new Synonym :  ";
+						cin >> newSynonym;
+						t1.editWord(existWord, newSynonym);
+						break;
+					}
 					}
 
-				} while (option != 7);
+				} while (option != 8);
 			}
 		}
-	
 
-	else if (selector == 2)
-	{
+
+		else if (selector == 2)
+		{
 			int option;
 			cout << "Please Select your Option\n";
 			cout << "1- Search a Word\n";
@@ -112,11 +124,11 @@ int main()
 				cin >> word;
 				t1.search(word);
 			}
-			
-	}
-	} while (selector != 3);
 
-	
-	
-	system("pause");
-}
+			}
+		}
+		} while (selector != 3);
+
+
+		system("pause");
+	}

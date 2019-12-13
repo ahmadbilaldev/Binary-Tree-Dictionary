@@ -2,9 +2,9 @@
 #include <fstream>
 #include "Node.h"
 //default constructor of node class
-Node::Node() : word(""), synonym(""), definition(""), leftptr(NULL), rightptr(NULL),bookmark(false) {}
+Node::Node() : word(""), synonym(""), definition(""), leftptr(NULL), rightptr(NULL), bookmark(false) {}
 //Parametrized Constructor of Node class
-Node::Node(string word, string synonym, string definition) : word(word), synonym(synonym), definition(definition), leftptr(NULL), rightptr(NULL),bookmark(false) {}
+Node::Node(string word, string synonym, string definition) : word(word), synonym(synonym), definition(definition), leftptr(NULL), rightptr(NULL), bookmark(false) {}
 //Function that is used to set the Data member that Contains the Word
 void Node::setWord(string word)
 {
@@ -64,7 +64,7 @@ string Node::getDefinition()
 	return definition;
 }
 //a function that is used to write all the data members of node to a file
-void Node::writeToFile(ofstream &outFile)
+void Node::writeToFile(ofstream& outFile)
 {
 	outFile << word;
 	outFile << ",";

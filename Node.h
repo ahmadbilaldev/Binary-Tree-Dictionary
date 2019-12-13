@@ -14,7 +14,7 @@ private:
 
 public:
 	//pointers to move towards leaf nodes
-	Node *leftptr, *rightptr;
+	Node* leftptr, * rightptr;
 	//default constructor of node class
 	Node();
 	//Parametrized Constructor of Node class
@@ -41,7 +41,7 @@ public:
 	string getDefinition();
 
 	//a function that is used to write all the data members of node to a file
-	void writeToFile(ofstream &outFile);
+	void writeToFile(ofstream& outFile);
 	//function that outputs the Synonym of a word
 	void printSynonym();
 	//function that outputs the Definition of a word
