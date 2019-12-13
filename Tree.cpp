@@ -49,7 +49,7 @@ Tree& Tree::insert(string word, string synonym, string meaning)
 		while (rptr) //iterating through the dictionary to find the place of new word
 		{
 			bptr = rptr;
-			if (rptr->getWord() < ptr->getWord())
+			if (rptr->getWord() < ptr->getWord()) 
 				rptr = rptr->rightptr;
 			else
 				rptr = rptr->leftptr;
@@ -72,9 +72,9 @@ void Tree::printInfixOrder()
 
 	if (!root) //tree is empty
 		cout << "\nEmpty Tree\n";
-	else
+	else 
 	{
-
+		
 		cout << left << setw(30);
 		cout << "Words";
 		cout << setw(30);
@@ -237,7 +237,7 @@ void Tree::printMarked()
 }
 
 //definition of local function declared in the prtBookMark
-void prtMarked(Node*& root)
+void prtMarked(Node*& root) 
 {
 	if (root)
 	{
@@ -297,11 +297,11 @@ void toFile(Node* root, ofstream& outFile)
 //Function to read from file
 void Tree::readFromFile(ifstream& inFile)
 {
-	string line = "";
+	string line = ""; 
 
 	while (!(inFile.eof()))
 	{
-		getline(inFile, line);
+		getline(inFile, line); 
 		if (line == "") //If line is empty
 		{
 			break;
@@ -327,8 +327,10 @@ void Tree::readFromFile(ifstream& inFile)
 }
 
 //Function user control
-bool Tree::logIn(ifstream& inFile)
+bool Tree::logIn(string fileName)
 {
+	ifstream inFile;
+	inFile.open(fileName);
 	string userFile, passFile, userInput, passInput;
 	//user prompt
 	cout << "Enter the UserName\n";
@@ -336,7 +338,7 @@ bool Tree::logIn(ifstream& inFile)
 	cout << "Enter the Password\n";
 	cin >> passInput;
 	bool logIn = false;
-	while (!(inFile.eof()))
+	while (!(inFile.eof())) 
 	{
 		getline(inFile, userFile);
 		getline(inFile, passFile);
@@ -350,7 +352,7 @@ bool Tree::logIn(ifstream& inFile)
 		cout << "Access Verified\n";
 	else
 		cout << "Access Denied\n"; //access not given
-	return logIn;
+	return logIn; 
 }
 
 //function to find word of the day
@@ -358,18 +360,18 @@ void Tree::wordOfTheDay()
 {
 	//generating a number between given range
 	int random(int count);
-	int index = 0;
+	int index=0;
 	if (root)
 	{
-		index = random(count - 1);
+		index = random(count-1); 
 	}
 	int counter = 1;
-	void searchWordByIndex(Node * &root, int counter, int index); //local declaration 
+	void searchWordByIndex(Node * &root, int counter,int index); //local declaration 
 	searchWordByIndex(root, counter, index); //call to local funcion to print the word
 }
 
 //Definition of local function declared in wordOfTheDay
-void searchWordByIndex(Node*& root, int counter, int index)
+void searchWordByIndex(Node*& root, int counter,int index)
 {
 	if (root)
 	{
@@ -407,15 +409,5 @@ void Tree::showSynonymAndMeaning(string word)
 	else
 	{
 		cout << "The Word which you have selected is not present in the dictionary\n";
-	}
-}
-void Tree::editSynonym(string existWord, string newSynonym)
-{
-
-	Node* ptr = removeWord(existWord);
-	if (ptr)
-	{
-		ptr->editSynonym(newSynonym);
-		insert(ptr->getWord(), ptr->getSynonym(), ptr->getDefinition());
 	}
 }
