@@ -20,6 +20,12 @@ void Node::editWord(string s1)
 {
 	word = s1;
 }
+//Function to edit synonym
+void Node::editSynonym(string newSynonym)
+{
+	synonym = newSynonym;
+}
+
 //Funcion that returns the Word 
 string Node::getWord()
 {
