@@ -2,15 +2,18 @@
 #include <string>
 #include <fstream>
 
+//Default constructor 
 Tree::Tree() : root(NULL), count(0)
 {
 }
 
-Tree::Tree(Node *&ptr) : root(ptr), count(1)
+//Parameterized Constructor
+Tree::Tree(Node*& ptr) : root(ptr), count(1)
 {
 	ptr = root->leftptr = root->rightptr = NULL;
 }
 
+//Function to check that if the dictionary empty
 bool Tree::isEmpty()
 {
 	if (!root)
@@ -19,6 +22,7 @@ bool Tree::isEmpty()
 		return false;
 }
 
+//Function to check that if dictionary is not empty
 bool Tree::isNotEmpty()
 {
 	if (!root)
@@ -27,10 +31,11 @@ bool Tree::isNotEmpty()
 		return true;
 }
 
-Tree &Tree::insert(string word, string synonym, string defination)
+//Function to insert a new word in the dictionary
+Tree& Tree::insert(string word, string synonym, string defination)
 {
-	Node *ptr = new Node(word, synonym, defination);
-	if (!root)
+	Node* ptr = new Node(word, synonym, defination);
+	if (!root) //Setting root when dictionary is empty
 	{
 		root = ptr;
 		++count;
@@ -38,13 +43,13 @@ Tree &Tree::insert(string word, string synonym, string defination)
 	}
 	else
 	{
-		Node *rptr, *bptr;
+		Node* rptr, * bptr; //runner pointers
 		bptr = NULL;
-		rptr = root;
-		while (rptr)
+		rptr = root; //initilizing the runner pointer from root
+		while (rptr) //iterating through the dictionary to find the place of new word
 		{
 			bptr = rptr;
-			if (rptr->getWord() < ptr->getWord())
+			if (rptr->getWord() < ptr->getWord()) 
 				rptr = rptr->rightptr;
 			else
 				rptr = rptr->leftptr;
@@ -60,15 +65,16 @@ Tree &Tree::insert(string word, string synonym, string defination)
 	return *this;
 }
 
+//Inorder Tree traversal
 void Tree::printInfixOrder()
 {
-	void prtInfixOrder(Node * root);
+	void prtInfixOrder(Node * root); //local function declaration
 
-	if (!root)
+	if (!root) //tree is empty
 		cout << "\nEmpty Tree\n";
-	else
+	else 
 	{
-
+		
 		cout << left << setw(30);
 		cout << "Words";
 		cout << setw(30);
@@ -76,54 +82,59 @@ void Tree::printInfixOrder()
 		cout << setw(30);
 		cout << "Definitions";
 		cout << endl;
-		prtInfixOrder(root);
+		prtInfixOrder(root); //printing the dictionary in inorder
 		cout << endl;
 	}
 }
 
-void prtInfixOrder(Node *root)
+//Definition of local function declared in Inorder traversal
+void prtInfixOrder(Node* root)
 {
 	if (root)
 	{
-		prtInfixOrder(root->leftptr);
+		prtInfixOrder(root->leftptr); //recursive call to go on left subtree
 		root->printWord();
-		prtInfixOrder(root->rightptr);
+		prtInfixOrder(root->rightptr); //recursive call to go on right subtree
 	}
 }
 
+//Dectructor
 Tree::~Tree()
 {
-	void deleteNodes(Node * root);
+	void deleteNodes(Node * root); //declaration of a local function
 	if (root)
-		deleteNodes(root);
+		deleteNodes(root); //call to the local function
 }
 
-void deleteNodes(Node *root)
+//defiition of function declared locally in destructor
+void deleteNodes(Node* root)
 {
 	if (root)
 	{
-		deleteNodes(root->leftptr);
-		deleteNodes(root->rightptr);
-		delete root;
+		deleteNodes(root->leftptr); //recursive call to go on left subtree
+		deleteNodes(root->rightptr); //recursive call to go on right subtree
+		delete root; //deleting node
 	}
 }
-Node *Tree::removeWord(string word)
+
+//Funcion to remove a word from dictionary
+Node* Tree::removeWord(string word)
 {
-	Node *ptr, *temp;
+	Node* ptr, * temp;
 	ptr = root;
 	temp = NULL;
 
-	if (!ptr)
+	if (!ptr) //tree is empty
 	{
 		cout << "The tree is empty thus returning NULL" << endl;
 		return NULL;
 	}
 
-	while (ptr)
+	while (ptr) //iterating through the dictionary
 	{
 		if (ptr->getWord() == word)
 		{
-			Node *rptr = ptr;
+			Node* rptr = ptr;
 			if (!ptr->leftptr)
 			{
 				if (!temp)
@@ -194,67 +205,74 @@ Node *Tree::removeWord(string word)
 	return NULL;
 }
 
+//Function to edit a word
 void Tree::editWord(string existWord, string newWord)
 {
-	Node *nptr = removeWord(existWord);
+	Node* nptr = removeWord(existWord); //call to find the word which is to be edited
 	if (nptr)
 	{
-		nptr->editWord(newWord);
-		insert(nptr->getWord(), nptr->getSynonym(), nptr->getDefinition());
+		nptr->editWord(newWord); //Calling node class function to edit the word
+		insert(nptr->getWord(), nptr->getSynonym(), nptr->getDefinition()); //inserting the word in the dictionary
 	}
 }
 
+//Function to set bookmark
 void Tree::setBookMark(string s1)
 {
-	Node *ptr = search(s1);
+	Node* ptr = search(s1); //searching the word
 	if (ptr)
 	{
-		ptr->setBookMark();
+		ptr->setBookMark(); //node class function is called to set bookmark
 	}
 }
 
+//Function to print book marked words
 void Tree::printMarked()
 {
-	void prtMarked(Node * &root);
+	void prtMarked(Node * &root); //declaration of a local function
 	if (root)
 	{
-		prtMarked(root);
+		prtMarked(root); //call to local function
 	}
 }
 
-void prtMarked(Node *&root)
+//definition of local function declared in the prtBookMark
+void prtMarked(Node*& root) 
 {
 	if (root)
 	{
-		prtMarked(root->leftptr);
+		prtMarked(root->leftptr); //To move to left subtree
 		if (root->getMarked())
 		{
-			root->printWord();
+			root->printWord(); //printing the word
 		}
-		prtMarked(root->rightptr);
+		prtMarked(root->rightptr); //recursive call to go on right subtree
 	}
 }
 
-Node *Tree::search(string s1)
+//Function to search a word in the dictionary
+Node* Tree::search(string s1)
 {
 	if (isNotEmpty())
 	{
-		Node *rptr = root;
+		Node* rptr = root; //runner pointer
 		while (rptr)
 		{
-			if (rptr->getWord() == s1)
+			if (rptr->getWord() == s1) //word is found
 				return rptr;
-			if (rptr->getWord() < s1)
+			if (rptr->getWord() < s1) //move to right subtree
 				rptr = rptr->rightptr;
 			else
-				rptr = rptr->leftptr;
+				rptr = rptr->leftptr; //move to left subtree
 		}
 	}
+	//word not in dictionary
 	cout << "The Word you are trying to search does not appear to be in the Dictionay" << endl;
 	return NULL;
 }
 
-void Tree::writeToFile(ofstream &outFile)
+//Function to write in file
+void Tree::writeToFile(ofstream& outFile)
 {
 
 	void toFile(Node * root, ofstream & outFile);
@@ -265,119 +283,125 @@ void Tree::writeToFile(ofstream &outFile)
 	}
 }
 
-void toFile(Node *root, ofstream &outFile)
+//Function definition of Locally declared in wrioteToFile
+void toFile(Node* root, ofstream& outFile)
 {
 	if (root)
 	{
-		toFile(root->leftptr, outFile);
-		root->writeToFile(outFile);
-		toFile(root->rightptr, outFile);
+		toFile(root->leftptr, outFile);//recursive call to go on left subtree
+		root->writeToFile(outFile); //writing in the file
+		toFile(root->rightptr, outFile);//recursive call to go on right subtree
 	}
 }
 
-void Tree::readFromFile(ifstream &inFile)
+//Function to read from file
+void Tree::readFromFile(ifstream& inFile)
 {
-	string line = "";
+	string line = ""; 
 
 	while (!(inFile.eof()))
 	{
-		getline(inFile, line);
-		if (line == "")
+		getline(inFile, line); 
+		if (line == "") //If line is empty
 		{
 			break;
 		}
 		int character = 0;
-		string word = "", synonym = "", def = "";
-		for (character; line[character] != ','; character++)
+		string word = "", synonym = "", def = ""; //local variables
+		for (character; line[character] != ','; character++) //reading char by char for word from file
 		{
 			word += line[character];
 		}
 		character++;
-		for (character; line[character] != ','; character++)
+		for (character; line[character] != ','; character++) //reading synonym from file
 		{
 			synonym += line[character];
 		}
 		character++;
-		for (character; line[character] != ','; character++)
+		for (character; line[character] != ','; character++) //reading definition from file
 		{
 			def += line[character];
 		}
-		insert(word, synonym, def);
+		insert(word, synonym, def); //insert function is called to insert in dictionary
 	}
 }
 
-bool Tree::logIn(ifstream &inFile)
+//Function user control
+bool Tree::logIn(ifstream& inFile)
 {
 	string userFile, passFile, userInput, passInput;
+	//user prompt
 	cout << "Enter the UserName\n";
 	cin >> userInput;
 	cout << "Enter the Password\n";
 	cin >> passInput;
 	bool logIn = false;
-	while (!(inFile.eof()))
+	while (!(inFile.eof())) 
 	{
 		getline(inFile, userFile);
 		getline(inFile, passFile);
-		if ((userFile == userInput) && (passFile == passInput))
+		if ((userFile == userInput) && (passFile == passInput)) //password validation
 		{
 			logIn = true;
 		}
 	}
 	inFile.close();
-	if (logIn)
+	if (logIn) //if password and user name is true
 		cout << "Access Verified\n";
 	else
-		cout << "Access Denied\n";
-	return logIn;
+		cout << "Access Denied\n"; //access not given
+	return logIn; 
 }
 
-/*void Tree::wordOfTheDay()
+//function to find word of the day
+void Tree::wordOfTheDay()
 {
+	//generating a number between given range
 	int random(int count);
-	int index;
+	int index=0;
 	if (root)
 	{
-		index = random(count);
+		index = random(count-1); 
 	}
 	int counter = 1;
-	cout << index;
-	void searchWordByIndex(Node * &root, int counter,int index);
-	searchWordByIndex(root, counter, index);
+	void searchWordByIndex(Node * &root, int counter,int index); //local declaration 
+	searchWordByIndex(root, counter, index); //call to local funcion to print the word
 }
 
-void searchWordByIndex(Node*& root, int counter,int index) 
+//Definition of local function declared in wordOfTheDay
+void searchWordByIndex(Node*& root, int counter,int index)
 {
-	if (root) 
+	if (root)
 	{
-
-		searchWordByIndex(root->leftptr, counter + 1, index);
-		if (counter == index) {
-			root->printWord();
+		searchWordByIndex(root->leftptr, counter + 1, index); //recursive call to go on left subtree
+		if (counter == index) { //If desired word is found
+			root->printWord(); //printing word
 		}
-		searchWordByIndex(root->rightptr, counter + 1, index);
+		searchWordByIndex(root->rightptr, counter + 1, index); //recursive call to go on right subtree
 	}
 }
 
+
+//Definition of local function declared in wordOfTheDay
 int random(int count)
 {
 	srand(time(0));
-	return ((rand() % count) + 1);
+	return ((rand() % count) + 1); //generating a random number
 }
-*/
 
 //Function to show synonym and definition of selected word
 void Tree::showSynonymAndDefinition(string word)
 {
-	Node* ptr = search(word);
+	Node* ptr = search(word); //searching the word
 	if (ptr != NULL)
 	{
 		cout << "Synonym and Definition of the selected word are: \n";
 		cout << "Word: ";
-		ptr->showWord();
+		ptr->showWord(); //displaying the word
 		cout << "\nSynonym: ";
-		ptr->printSynonym();
+		ptr->printSynonym(); //displaying the synonym
 		cout << "\nDefinition: ";
-		ptr->printDefinition();
+		ptr->printDefinition(); //displaying the definition
 		cout << endl;
 	}
 	else
