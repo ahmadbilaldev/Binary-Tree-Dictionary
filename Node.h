@@ -25,6 +25,8 @@ public:
 	void setSynonym(string synOfWord);
 	//Function that is used to EDIT an existing word
 	void editWord(string s1);
+	//Function to edit synonym
+	void editSynonym(string newSynonym);
 	//Funcion that returns the Word 
 	string getWord();
 	//Function that sets bookmark for a word
